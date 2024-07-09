@@ -27,7 +27,8 @@ export class PostsController {
     description: 'create post',
   })
   create(@Request() req, @Body() createPostDto: CreatePostDto) {
-    if (req.user.username !== createPostDto.authorName) throw new ForbiddenException();
+    if (req.user.username !== createPostDto.authorName)
+      throw new ForbiddenException();
     return this.postsService.create(createPostDto);
   }
 
